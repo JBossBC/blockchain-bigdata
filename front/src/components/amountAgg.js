@@ -86,7 +86,7 @@ class AmountAgg extends Component{
     render(){
         return(
             <div className='xpanel-wrapper xpanel-wrapper-4' style={{position:'relative'}}>
-            <div  className='content_title'>过去一季度交易金额总计</div>
+            <div  className='content_title'>交易金额总计</div>
             <BorderBox1>
                 <div className='xpanel'>
                     <div className='fill-h'>
