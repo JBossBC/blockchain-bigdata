@@ -4,7 +4,15 @@
 package Model
 
 
-type Body struct{
-	Transaction []*Transaction
-	Uncles []*BlockHeader 
+type BlockBody interface{
+	GetTransactions()Transactions
+}
+
+
+type BaseBody struct{
+	Transactions Transactions
+}
+
+func(base *BaseBody)GetTransactions()Transactions{
+	return base.Transactions
 }

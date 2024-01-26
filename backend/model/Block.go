@@ -2,7 +2,7 @@ package Model
 
 
 type Block struct{
-	Blockchain *Blockchain
+	Blockchain *BlockChain
 	header *BlockHeader
 	Uncles []*BlockHeader
 	Transactions Transactions
