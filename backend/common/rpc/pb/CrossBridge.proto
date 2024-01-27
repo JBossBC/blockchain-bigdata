@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package ="rpc";
+
+message BlockChain{
+    string ChainName = 1;
+    string ChainVersion =2;
+}
+
+message Address{
+    string address =1;
+    int32 status =2;
+}
+message CrossBridgeInfo{
+ BlockChain from = 1;
+ BlockChain to = 2;
+ Address contract=3;
+}
+
+service CrossBridge{
+    rpc GetToBlockChain(BlockChain,Address) returns (BlockChain);
+    rpc 
+}
