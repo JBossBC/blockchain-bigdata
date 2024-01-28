@@ -1,0 +1,54 @@
+# 强关联模型
+
+
+## 输入参数
+
++ 误差时间区间(mistake)
++ 强匹配个数(relative)
++ 遍历层数(允许无限制)---->depth
+
+
+
+## 算法设计结构体
+
+
+
+	type node struct{
+		address string
+		balance int64
+		relative int64	
+	}
+	type emptyTransaction string // including the transaction unquie id
+	type transactionNode struct{
+			emptyTransaction
+			from string
+			to string
+			balance int64
+			date timestamp
+	}
+			
+	type routeNode struct{
+		preNode emptyTransaction
+		transactionNode emptyTransaction
+		rootNode emptyTransaction //根交易(用来溯源从那个源头推导出来)
+		relativeNode []emptyTransaction
+		nextNode emptyTransaction
+	}
+	map[2]map[string]*node  accounts
+	map[string][]*routeNode crimePath
+	//局部变量
+	map[string][]timestamp accountsTransactionMap
+	map[string][]timestamp focusMap
+	map[string]transactionNode targetMap
+	//线段树 dateSearch(用来通过date range 查询交易集的高效数据结构)
+
+## 算法流程
+
+
+1. 将源交易转化为transactionNodes
+2. 遍历 transactionNodes,将相同transaction.to的交易写入dateFocusMap
+3. 遍历accountsTransactionMap,将有交集的同一账户的时间集合取并集得到focusMap
+3. 查询当前transactionNode.to在focusMap时间段的所有交易得到targetMap
+4. 构造线段树得到dateSearch
+4. 遍历transactionNodes,对于每一个transactionNode,通过dateSearch找到 corTransactions
+5. 对corTransactions进行分析，找到能够等于transactionNode.balance的所有可能集合
