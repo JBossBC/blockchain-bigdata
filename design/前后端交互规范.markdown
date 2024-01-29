@@ -1,0 +1,12 @@
+# 前后端交互规范
+
+
+后端返回模板
+
+
+	type Response struct{
+		result bool
+		data any
+		msg string
+	}
+

@@ -18,7 +18,7 @@ type TransactionNode struct {
 	Date    int64
 }
 
-func EnconomyMatch(transactions []*TransactionNode, mistake int64, relative int64, maxDepth int64) (accounts map[string]*matchAccountNode) {
+func EnconomyStrongMatch(transactions []*TransactionNode, mistake int64, relative int64, maxDepth int64) (accounts map[string]*matchAccountNode) {
 	var gradMatch func(preBalance int64, tos []*TransactionNode) [][]*TransactionNode
 	accounts = make(map[string]*matchAccountNode)
 	gradMatch = func(preBalance int64, tos []*TransactionNode) [][]*TransactionNode {
@@ -105,6 +105,6 @@ func saveRoute(route []*TransactionNode) {
 }
 
 func batchSearch(address string, daterange []*dateRange) []*TransactionNode {
-
+	cypherQuery:="Match(a:Account)"
 	return nil
 }
