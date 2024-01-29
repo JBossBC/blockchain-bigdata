@@ -23,7 +23,7 @@ func (nodes transactionDateSearch) Swap(i, j int) {
 var sortOnce = make(map[uintptr]any, 0)
 var mutex sync.Mutex
 
-func onceSort(nodes *transactionDateSearch) {
+func _onceSort(nodes *transactionDateSearch) {
 	mutex.Lock()
 	defer mutex.Unlock()
 	ptr := uintptr(unsafe.Pointer(nodes))
@@ -44,7 +44,7 @@ func (nodes transactionDateSearch) Sort() {
 }
 
 func (nodes transactionDateSearch) rangeQuery(date, mistake int64) []*TransactionNode {
-	onceSort((*transactionDateSearch)(&nodes))
+	_onceSort((*transactionDateSearch)(&nodes))
 	result := []*TransactionNode{}
 	start := date - mistake
 	end := date + mistake
@@ -97,7 +97,7 @@ func (nodes transactionDateSearch) mergeRanges(mistake int64) []*dateRange {
 	if len(nodes) == 0 {
 		return nil
 	}
-	onceSort((*transactionDateSearch)(&nodes))
+	_onceSort((*transactionDateSearch)(&nodes))
 	mergedRanges := []*dateRange{&dateRange{nodes[0].Date - mistake, nodes[0].Date + mistake}}
 	for i := 1; i < len(nodes); i++ {
 		currentNode := nodes[i]

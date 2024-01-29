@@ -1,13 +1,17 @@
 package core
 
 type routeNode struct {
-	PreNode             *routeNode
-	NextNode            *routeNode
+	PreNode             string
+	NextNode            string
 	Info                emptyTransaction
-	RootTransaction     emptyTransaction
-	RelativeTransaction []emptyTransaction
+	RelativeTransaction []*emptyTransaction
 }
 
-func NewRouteNodeFromTransactionNode(preNodes *routeNode, uncles []*TransactionNode) *routeNode {
-
+func newRouteNodeFromTransactionNode(cur *TransactionNode, uncles []*emptyTransaction) *routeNode {
+	return &routeNode{
+		PreNode:             cur.From,
+		NextNode:            cur.To,
+		Info:                cur.emptyTransaction,
+		RelativeTransaction: uncles,
+	}
 }
