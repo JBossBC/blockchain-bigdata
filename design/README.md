@@ -2,7 +2,7 @@
 
 ## 前置工作
 
-+ fork![原仓库](https://github.com/JBossBC/blockchain-bigdata)到自己仓库下,创建特征分支develop-本次任务,在这个分支下完成编码工作后pull request到原仓库的main分支
++ fork[原仓库](https://github.com/JBossBC/blockchain-bigdata)到自己仓库下,创建特征分支develop-本次任务,在这个分支下完成编码工作后pull request到原仓库的main分支
 + **查看design目录下的相关文件,理解当前系统要做的工作**
 
 
