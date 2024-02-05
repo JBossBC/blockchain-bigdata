@@ -1,3 +1,4 @@
+/*
 import React,{Component} from 'react'
 import './App.css';
 import { AccountScreen, AmountAgg, GasState, RealTimeIncome, RealTimePayOff, TokenType, TransactionState, TransactionType } from './components';
@@ -42,6 +43,36 @@ class App extends Component{
       </div>
     )
    }
+}
+
+export default App;*/
+import React, { Component } from 'react';
+import {Header,Center,Left,Right} from './components'
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        return (
+            <div className="data">
+                <Header />
+                <div className="wrapper">
+                    <div className="container-fluid">
+                        <div className="row fill-h" style={{ display: 'flex' }}>
+
+                            <Left />
+                            <Center />
+                            <Right />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;

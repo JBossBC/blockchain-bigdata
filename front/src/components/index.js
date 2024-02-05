@@ -15,3 +15,11 @@ export {default as TransactionType} from './transactionType'
 export {default as TokenType} from './tokenType'
 
 export {default as AmountAgg} from './amountAgg';
+
+export {default as Center} from './center';
+
+export {default as Header} from './header';
+export {default as Right} from './right';
+
+export {default as Left} from './left';
+
